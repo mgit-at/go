@@ -75,7 +75,7 @@ const DevNull = "/dev/null"
 // methods on the returned File can be used for I/O.
 // If there is an error, it will be of type *PathError.
 func OpenFile(name string, flag int, perm FileMode) (file *File, err error) {
-	r, e := syscall.Open(name, flag|syscall.O_CLOEXEC, syscallMode(perm))
+	r, e := syscall.Open(name, flag|0, syscallMode(perm))
 	if e != nil {
 		return nil, &PathError{"open", name, e}
 	}
